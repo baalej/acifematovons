@@ -1,0 +1,317 @@
+@keyframes flip-front-1 {
+	0% {
+		transform: rotate3d(0, 0, 0, 0deg) scale(1.0);
+	}
+
+	50% {
+		transform: rotate3d(1, 0, 0, 90deg) scale(0.72);	
+	}
+
+	100% {
+		transform: rotate3d(0, 1, 0, 180deg) scale(1.0);
+	}
+}
+
+@keyframes flip-front-2 {
+	0% {
+		transform: rotate3d(0, 0, 0, 0deg) scale(1.0);
+	}
+
+	50% {
+		transform: rotate3d(0, 1, 1, 90deg) scale(0.72);	
+	}
+
+	100% {
+		transform: rotate3d(0, 1, 0, 180deg) scale(1.0);
+	}
+}
+
+@keyframes flip-front-3 {
+	0% {
+		transform: rotate3d(0, 0, 0, 0deg) scale(1.0);
+	}
+
+	50% {
+		transform: rotate3d(1, 1, 0, 90deg) scale(0.72);	
+	}
+
+	100% {
+		transform: rotate3d(0, 1, 0, 180deg) scale(1.0);
+	}
+}
+
+@keyframes flip-back-1 {
+	0% {
+		transform: rotate3d(0, 1, 0, 180deg) scale(1.0);
+	}
+
+	50% {
+		transform: rotate3d(1, 0, 0, 90deg) scale(0.72);	
+	}
+
+	100% {
+		transform: rotate3d(0, 0, 0, 0deg) scale(1.0);
+	}
+}
+
+@keyframes flip-back-2 {
+	0% {
+		transform: rotate3d(0, 1, 0, 180deg) scale(1.0);
+	}
+
+	50% {
+		transform: rotate3d(0, 1, 1, 90deg) scale(0.72);	
+	}
+
+	100% {
+		transform: rotate3d(0, 0, 0, 0deg) scale(1.0);
+	}
+}
+
+@keyframes flip-back-3 {
+	0% {
+		transform: rotate3d(0, 1, 0, 180deg) scale(1.0);
+	}
+
+	50% {
+		transform: rotate3d(1, 1, 0, 90deg) scale(0.72);	
+	}
+
+	100% {
+		transform: rotate3d(0, 0, 0, 0deg) scale(1.0);
+	}
+}
+
+:root {
+	--brick-height: 24vw;
+	--brick-width: calc(50vw - 24px);
+	/*--text-color: #ff3300;*/
+	--text-color: #000;
+	--h-side-color: #ddd;
+	--v-side-color: #ccc;
+	--face-color: #fff;
+	--hole-color: #000;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: serif;
+	/*font-size: 16px;*/
+	/*letter-spacing: 0.02em;*/
+	/*line-height: 1.3em;*/
+	line-height: 1.2em;
+	margin: 0;
+	background: var(--text-color);
+	/*background-image: url('./terra.jpg');*/
+	/*background-repeat: no-repeat;*/
+	background-size: cover;
+}
+
+.container {
+  width: var(--brick-width);
+  height: var(--brick-height);
+  /*margin: 100px;*/
+
+  opacity: 0;
+	transform: translateY(24px);
+
+	transition: all .25s;
+
+	cursor: alias;
+}
+
+.cube {
+  position: relative;
+  width: var(--brick-width);
+  height: var(--brick-height);
+  transform-style: preserve-3d;
+}
+
+.flip-initial-1 {
+	animation: flip-front-1 5s forwards;
+	animation-delay: 5s;
+}
+
+.flip-initial-2 {
+	animation: flip-front-2 5s forwards;
+	animation-delay: 5s;
+}
+
+.flip-initial-3 {
+	animation: flip-front-3 5s forwards;
+	animation-delay: 5s;
+}
+
+.flip-front-1 {
+	animation: flip-front-1 5s forwards;
+}
+
+.flip-front-2 {
+	animation: flip-front-2 5s forwards;
+}
+
+.flip-front-3 {
+	animation: flip-front-3 5s forwards;
+}
+
+.flip-back-1 {
+	animation: flip-back-1 5s forwards;
+}
+
+.flip-back-2 {
+	animation: flip-back-2 5s forwards;
+}
+
+.flip-back-3 {
+	animation: flip-back-3 5s forwards;
+}
+
+.face {
+  position: absolute;
+  opacity: 0.95;
+  /*overflow: scroll;*/
+}
+
+.face-image {
+	display: block;
+	margin: auto;
+
+	height: auto;
+	max-height: 100%;
+
+	width: auto;
+	max-width: 100%;
+}
+
+.front {
+	width: var(--brick-width);
+  height: var(--brick-height);
+	transform: translateZ(0);
+	background: var(--face-color);
+}
+
+.back {
+	width: var(--brick-width);
+  height: var(--brick-height);
+	transform: translateZ(-8vw) rotateY(180deg);
+	background: var(--face-color);
+}
+
+.text {
+	padding: 1.6vw;
+	color: var(--text-color);
+}
+
+.left {
+	width: 8vw;
+  height: var(--brick-height);
+	transform: translateX(-4vw) translateZ(-4vw) rotateY(-90deg);
+	background: var(--h-side-color);
+}
+
+.right {
+	width: 8vw;
+  height: var(--brick-height);
+	transform: translateX(calc(var(--brick-width) - 4vw)) translateZ(-4vw) rotateY(90deg);
+	background: var(--h-side-color);
+}
+
+.top {
+	width: var(--brick-width);
+  height: 8vw;
+	transform: translateY(-4vw) translateZ(-4vw) rotateX(90deg);
+	background: var(--v-side-color);
+}
+
+.bottom {
+	width: var(--brick-width);
+  height: 8vw;
+	transform: translateY(calc(var(--brick-height) - 4vw)) translateZ(-4vw) rotateX(-90deg);
+	background: var(--v-side-color);
+}
+
+.inner-cube {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.hole {
+	/*width: 20%;*/
+	/*height: 39.33%;*/
+	width: 16%;
+	height: 32.33%;
+	border-radius: 72px;
+	background: var(--hole-color);
+}
+
+.row,
+.row-individual {
+	display: flex;
+	padding: 0 12px;
+	gap: 8px;
+	margin: 8px 0;
+}
+
+.row {
+	justify-content: space-between;
+}
+
+.row-individual {
+	justify-content: center;
+}
+
+a {
+	text-decoration: none;
+	border-bottom: 1px solid black;
+	border-bottom-style: dashed;
+	color: var(--text-color);
+}
+
+#image-1,
+#image-2,
+#image-3 {
+	background-size: cover;
+	background-position: center;
+}
+
+#image-1 {
+	background-image: url('./atovo.jpg');
+}
+
+#image-2 {
+	background-image: url('./cadira.jpg');
+}
+
+#image-3 {
+	background-image: url('./taula.jpg');
+}
+
+@media only screen and (max-width: 800px) {
+	:root {
+		--brick-height: 48vw;
+		--brick-width: calc(100vw - 24px);
+	}
+
+	body {
+		padding: 6px 0;
+		font-size: 14px;
+	}
+
+	.row,
+	.row-individual {
+		flex-flow: column;
+		justify-content: center;
+		margin: 0;
+	}
+
+	.row .container,
+	.row-individual .container {
+		margin: 6px 0;
+	}
+}
