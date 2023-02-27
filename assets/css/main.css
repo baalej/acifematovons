@@ -84,7 +84,7 @@
 
 :root {
 	--brick-height: 24vw;
-	--brick-width: calc(50vw - 24px);
+	--brick-width: calc(50vw - 12px);
 	/*--text-color: #ff3300;*/
 	--text-color: #000;
 	--h-side-color: #ddd;
@@ -253,7 +253,7 @@ body {
 .row,
 .row-individual {
 	display: flex;
-	padding: 0 12px;
+	padding: 0 8px;
 	gap: 8px;
 	margin: 8px 0;
 }
@@ -295,11 +295,11 @@ a {
 @media only screen and (max-width: 800px) {
 	:root {
 		--brick-height: 48vw;
-		--brick-width: calc(100vw - 24px);
+		--brick-width: calc(100vw - 16px);
 	}
 
 	body {
-		padding: 6px 0;
+		padding: 4px 0;
 		font-size: 14px;
 	}
 
@@ -308,10 +308,11 @@ a {
 		flex-flow: column;
 		justify-content: center;
 		margin: 0;
+		gap: 0;
 	}
 
 	.row .container,
 	.row-individual .container {
-		margin: 6px 0;
+		margin: 4px 0;
 	}
 }
